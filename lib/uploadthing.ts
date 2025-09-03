@@ -1,4 +1,4 @@
-'use server'import {
+import {
   generateUploadButton,
   generateUploadDropzone,
 } from "@uploadthing/react";
