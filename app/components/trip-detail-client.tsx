@@ -52,7 +52,12 @@ export default function TripDetailClient({ trip }: TripProp) {
         </div>
       </div>
       <div className="bg-white p-6 shadow rounded-lg">
-        <Tabs value={activeTab} onValueChange={setActiveTab}>
+        <Tabs
+          value={activeTab}
+          onValueChange={(value) =>
+            setActiveTab(value as "overview" | "itinerary" | "map")
+          }
+        >
           <TabsList>
             <TabsTrigger value="overview" className="text-lg">
               Overview
@@ -76,12 +81,16 @@ export default function TripDetailClient({ trip }: TripProp) {
                     {trip.startDate.toLocaleDateString()} -{" "}
                     {trip.endDate.toLocaleDateString()}
                     <br />
-                    {`${Math.round(
-                      trip.endDate.getTime() - trip.startDate.getTime()
-                    )}`}
+                    {`${
+                      Math.round(
+                        trip.endDate.getTime() - trip.startDate.getTime()
+                      ) /
+                      (1000 * 60 * 60 * 24)
+                    } days(S)`}
                   </p>
                 </div>
               </div>
+              <div className="flex items-start "></div>
             </div>
           </TabsContent>
         </Tabs>

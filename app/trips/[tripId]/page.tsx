@@ -1,3 +1,4 @@
+import TripDetailClient from "@/app/components/trip-detail-client";
 import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 
@@ -6,7 +7,7 @@ export default async function TripDetail({
 }: {
   params: Promise<{ tripId: string }>;
 }) {
-  const tripId = await params;
+  const { tripId } = await params;
 
   const session = await auth();
 
